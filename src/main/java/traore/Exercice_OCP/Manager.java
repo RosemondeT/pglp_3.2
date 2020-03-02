@@ -1,0 +1,19 @@
+package traore.Exercice_OCP;
+
+public class Manager extends Employe {
+
+	
+	public Manager(String nom, String adresse, int an) {
+		super(nom,adresse,an);
+	}
+	
+	public double calculSalaire() {
+		return super.calculSalaire() + 100;
+	}
+	
+	public void afficheCoordonneees () {
+		super.afficheCoordonneees();
+	}
+
+
+}
