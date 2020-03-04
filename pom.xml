@@ -22,4 +22,122 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <build>
+		<plugins>
+		<plugin>
+		<!-- Génération de javadoc -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+				<execution>
+					<id>attach-javadocs</id>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+				</execution>
+			</executions>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			
+			
+			<!-- Vérification des conventions de codage avec checkstyle -->
+			<plugin>
+          		<groupId>org.apache.maven.plugins</groupId>
+          		<artifactId>maven-checkstyle-plugin</artifactId>
+          		<version>3.1.0</version>
+        	</plugin>
+        	
+        		<!-- Trouver les bugs -->
+        	
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>3.0.6-SNAPSHOT</version>
+      </plugin>
+    
+    
+     <!-- spotbugs -->
+    <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>3.1.12.3-SNAPSHOT</version>
+        <configuration>
+          <xmlOutput>true</xmlOutput>
+          <!-- Optional directory to put spotbugs xdoc xml report -->
+          <xmlOutputDirectory>target/site</xmlOutputDirectory>
+        </configuration>
+      </plugin>
+      	
+        	<plugin>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>ufr.uvsq?convertisseur.json.csv.jsonTocsv.ConvPrincipal</mainClass>
+          </manifest>
+        </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+      </configuration>
+      <executions>
+        <execution>
+          <id>make-assembly</id> 
+          <phase>package</phase> <!-- packaging phase -->
+          <goals>
+            <goal>single</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+    
+    
+    <!-- Generer le jar -->
+    
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                
+                  <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>2.0.1</version>
+                </plugin>
+                
+                 <plugin>
+        				<groupId>org.apache.maven.plugins</groupId>
+        				<artifactId>maven-shade-plugin</artifactId>
+        				<version>3.2.1</version>
+        				<executions>
+          					<execution>
+            					<phase>package</phase>
+            					<goals>
+             						 <goal>shade</goal>
+            					</goals>
+            				<configuration>
+              				<artifactSet>
+                			<excludes>
+                  			<exclude>classworlds:classworlds</exclude>
+                  			<exclude>junit:junit</exclude>
+                  			<exclude>jmock:*</exclude>
+                  			<exclude>*:xml-apis</exclude>
+                  			<exclude>org.apache.maven:lib:tests</exclude>
+                  			<exclude>log4j:log4j:jar:</exclude>
+                			</excludes>
+              				</artifactSet>
+            				</configuration>
+          					</execution>
+        				</executions>
+      			</plugin>
+      
+		</plugins>
+	</build>
+  
+  
 </project>
