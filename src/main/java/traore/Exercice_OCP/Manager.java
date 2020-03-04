@@ -7,7 +7,7 @@ public class Manager extends Employe {
 		super(nom,adresse,an);
 	}
 	
-	public double calculSalaire() {
+	public double calculSalaireManager() {
 		return super.calculSalaire() + 100;
 	}
 	
