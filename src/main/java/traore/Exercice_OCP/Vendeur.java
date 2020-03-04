@@ -10,7 +10,7 @@ public class Vendeur extends Employe{
 		this.commission=commission;
 	}
 	
-	public double calculSalaire() {
+	public double calculSalaireVendeur() {
 		return super.calculSalaire() + commission;
 	}
 	
