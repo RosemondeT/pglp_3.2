@@ -1,5 +1,9 @@
 package traore.Exercice_OCP;
 
+/**
+ * Classe Manager qui est une classe fille de la classe Employe
+ */
+
 public class Manager extends Employe {
 
 	
@@ -7,6 +11,11 @@ public class Manager extends Employe {
 		super(nom,adresse,an);
 	}
 	
+	/**
+     * Méthode calculSalaireManager ()
+     * 
+     * @return le salaire d'un Manager.
+     */
 	public double calculSalaireManager() {
 		return super.calculSalaire() + 100;
 	}

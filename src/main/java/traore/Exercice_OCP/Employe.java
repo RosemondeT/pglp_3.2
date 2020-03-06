@@ -1,5 +1,8 @@
 package traore.Exercice_OCP;
 
+/**
+ * Classe Employe qui possède deux méthode à savoir calculSalaire() et afficheCoordonneees()
+ */
 public class Employe {
 	protected final String nom;
 	protected final String adresse;
@@ -13,6 +16,11 @@ public class Employe {
 	}
 
 
+	/**
+     * Méthode calculSalaire ()
+     * 
+     * @return le salaire de l'employe.
+     */
 	public double calculSalaire () 
 		{ 
 		   if(anciennete!=0) {
@@ -23,6 +31,11 @@ public class Employe {
 			return salaire_de_base ; 
 			
 		} 
+	
+
+/**
+ * Méthode afficheCoordonneees () qui affiche les coordonnées de l'employe
+ */
 		public void afficheCoordonneees () {
 			System.out. println (nom + " , " + adresse);
 		}
